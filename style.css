@@ -94,15 +94,20 @@ footer {
     transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
 }
 
+.hidden {
+	visibility: hidden;
+}
+
 .topAlien {
 	width:200px;
 	height:200px;
-	background-image: url("alien1.png");
+	background-image: url("alien2.png");
 	position:absolute;
 	margin: 0 auto;
-	bottom:45%;
+	bottom:50%;
 	border-radius: 8px;
-	margin-left: -15px;
+	margin-left: 30px;
+	background-repeat: no-repeat;
 }
 
 #starter {
