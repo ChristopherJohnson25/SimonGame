@@ -1,4 +1,7 @@
 # SimonGame
+
+http://christopherjohnson25.github.io./SimonGame/index.html
+
 Simon Game - Project 1
 
 User Stories
