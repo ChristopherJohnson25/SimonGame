@@ -3,7 +3,7 @@ $(document).ready(function(){
 console.log("linked");
 
 // var alien = document.querySelector(".topAlien");
-// var button = document.querySelector(".bottomButton");
+var button = document.querySelector(".bottomButton");
 var start = document.getElementById('starter');
 var score = document.getElementById('frame');
 
@@ -16,6 +16,8 @@ var button1 = document.querySelector("#button1");
 var button2 = document.querySelector("#button2");
 var button3 = document.querySelector("#button3");
 var button4 = document.querySelector("#button4");
+
+var moves = []
 
 //assinging all variables, figured that each button and each simon element needed it's own var
 //doing it by class didnt help differentiate them enough. 
@@ -56,8 +58,6 @@ score.addEventListener('click', starter);
 //This is one way to sort of initiate the game, will perhaps do a different class additon.
 
 //going to mess around with .Random here.
-//heard about the fisher yates shuffle...thinking about it. 
-
 
 var aliens = [
 	alien1,
@@ -70,13 +70,29 @@ var random = aliens[Math.floor(Math.random()*aliens.length)];
 
 var randomToggle = function(){
 	setTimeout(function(){random.classList.add("hidden");},1000);
-	setTimeout(function(){random.classList.remove("hidden");},2000);
+	setTimeout(function(){random.classList.remove("hidden");},1500);
 };
 
 
 start.addEventListener('click', randomToggle);
 
 
+//must now push user input into an empty array, will then === that to the random toggle array. 
+
+
+
+var movePush = function(){
+	if (event.target.id === button1) {
+		moves.push(button1);
+	}
+	else if (event.target.id === button2) {
+		moves.push(button2);
+	}
+	console.log(moves);
+	
+};
+
+movePush();
 
 
 
@@ -94,7 +110,4 @@ start.addEventListener('click', randomToggle);
 
 
 
-
-
-
-})
+});
