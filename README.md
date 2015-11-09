@@ -6,8 +6,7 @@ Cowboys and Aliens Simon
 
 Simon is a game of speed where players must match the combination that the computer outputs. As the game progresses the intervals in which the player must select buttons decreases. One plays until he/she loses, for this is more of a 'high score' geared game. 
 
-This version of Simon will be played a bit differently. Upon pressing a start button three lights will light up in a random sequence, and the user must click the corresponding button in the correct sequence. If all works, the sequence will progress slowly and begin to speed up. Failure will result in losing the game. The user will be notified of loss by a window alert or by modal. Users will also be notified of high scores through a modal every 10 wins. 
-
+The computer starts by randmonly choosing an alien head, the user must follow this by clicking on the corresponding button. In round two, the computer will repeat the first selection, followed by a new random selection. The user must respond by clicking both corresponding buttons in the sequence. The game will continue until the user chooses a wrong button.
 
 Wire Frame
 
