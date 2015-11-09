@@ -17,7 +17,7 @@ var button2 = document.querySelector("#button2");
 var button3 = document.querySelector("#button3");
 var button4 = document.querySelector("#button4");
 
-var moves = []
+moves = [];
 
 //assinging all variables, figured that each button and each simon element needed it's own var
 //doing it by class didnt help differentiate them enough. 
@@ -82,13 +82,12 @@ start.addEventListener('click', randomToggle);
 
 
 var movePush = function(){
+	addEventListener('click');
 	if (event.target.id === button1) {
 		moves.push(button1);
-	}
-	else if (event.target.id === button2) {
+	} else if (event.target.id === button2) {
 		moves.push(button2);
 	}
-	console.log(moves);
 	
 };
 
