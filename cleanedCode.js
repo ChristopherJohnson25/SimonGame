@@ -1,8 +1,5 @@
-// $(document).ready(function(){
-
 console.log("linked");
 
-// var alien = document.querySelector(".topAlien");
 var button = document.querySelector(".bottomButton");
 var start = document.getElementById('starter');
 var score = document.getElementById('frame');
@@ -22,27 +19,12 @@ var computerMoves = [];
 var scoreNumber = document.querySelector("#number")
 
 var score1 = 0
-//assinging all variables, figured that each button and each simon element needed it's own var
-//doing it by class didnt help differentiate them enough. 
-
-// anna was here - refactoring the above functions to take a parameter
 var toggleAlien = function(event){
 
     movePush();
-    // "Guard clause"
     if (moves.length < computerMoves.length) {
-        // stop EVERYTHING IT'S A FIRE SALE
         return;
     }
-    // debugger;
-    // get info about which button was clicked: This is available as a property of the event object - event.target!
-    // push user's move into moves array
-    // Toggle the appropriate alien
-    // let's check to see if the arrays are the same length yet!
-        // if they're not the same, 
-    // Compare the two arrays
-    // We compare the user's choices with the computer's choices
-    // Assuming user is correct
     var arraysDoMatch = true;
 
     for (var i = 0; i < moves.length; i++) {
@@ -53,24 +35,14 @@ var toggleAlien = function(event){
 
     if (arraysDoMatch) {
         console.log("They match!");
-        // I get to move on to the next round!
-        // reset user's moves counter
         moves = [];
-        //score counter
         score1 ++;
-        scoreNumber.innerHTML  = score1;  //thanks taylor! 
+        scoreNumber.innerHTML  = score1;  
     } else {
         alert("You Lose!")
         console.log("Noo.");
     }
-    // If the arrays are the same length & contain the same stuff in the same order, the user won that round! Computer goes again & adds to array
-    // If the arrays are not the same length (User's array is shorter), then we wait for another click 
-    // If the contents of the arrays are NOT the same... alert YOU LOST.
 };
-
-//Above is sort of a test to see that all my elements are assinged 
-// properly, and that the classes are working properly. 
-
 
 var starter = function(){
 	alien1.classList.remove("hidden");
@@ -80,19 +52,12 @@ var starter = function(){
 };
 
 
-//This is one way to sort of initiate the game, will perhaps do a different class additon.
-
-//going to mess around with .Random here.
-
 var aliens = [
 	alien1,
 	alien2,
 	alien3,
 	alien4
 ];
-
-//this below is thanks to Taylor for giving me a good direction!
-
 
 
 var hide = function (alienFlash){
@@ -112,10 +77,7 @@ var flash = function (alienFlash){
 
 var randomToggle = function(){
     var random = aliens[Math.floor(Math.random()*aliens.length)];
-    // storing this random div in the computer moves array
     computerMoves.push(random);
-    //for loop to iteratre through array. 
-    //make every element blink. 
     for (var i = 0; i < computerMoves.length; i++) {
         var setTimer = function(indexToRemember) {
             window.setTimeout(function(){
@@ -129,15 +91,9 @@ var randomToggle = function(){
 }
 };
 
-//must now push user input into an empty array, will then === that to the random toggle array. 
-
-// movePush === computer random choices 
-
-
-// Should happen when a user clicks, and not before
 var movePush = function(){
     console.log("Pushing the div with an id of " + event.target.id + " into the 'moves' array.");
-    // debugger
+
     if (event.target === button1) {
         moves.push(alien1);
          setTimeout(function(){
@@ -146,7 +102,6 @@ var movePush = function(){
             setTimeout(function(){
                 alien1.classList.remove("hidden");
             },300);
-        // toggleAlien(alien1);
     } else if (event.target === button2) {
         moves.push(alien2);
           setTimeout(function(){
@@ -155,7 +110,6 @@ var movePush = function(){
             setTimeout(function(){
                 alien2.classList.remove("hidden");
             },300);
-        // toggleAlien(alien2);
     } else if (event.target === button3) {
         moves.push(alien3);
           setTimeout(function(){
@@ -164,9 +118,6 @@ var movePush = function(){
             setTimeout(function(){
                 alien3.classList.remove("hidden");
             },300);
-        // toggleAlien(alien3);
-    // } else (event.target.id === button4) {
-        // else doesn't need a conditional
     } else if (event.target === button4) {
         moves.push(alien4);
           setTimeout(function(){
@@ -175,11 +126,10 @@ var movePush = function(){
             setTimeout(function(){
                 alien4.classList.remove("hidden");
             },800);
-        // toggleAlien(alien4);
     }
 };
 
-// movePush();
+
 
 
 score.addEventListener('click', starter);
@@ -189,27 +139,3 @@ button3.addEventListener('click', toggleAlien);
 button4.addEventListener('click', toggleAlien);
 
 start.addEventListener('click', randomToggle);
-
-
-
-// create an array that will hold random computer choices
-// compare arrays
-// clear the arrays - computer & user moves
-
-// First, compuer goes & displays/saves a random alien
-// Next, the user chooses an alien
-// Then, we compare the user's choices with the computer's choices
-    // If the arrays are the same length & contain the same stuff in the same order, the user won that round! Computer goes again & adds to array
-    // If the arrays are not the same length (User's array is shorter), then we wait for another click 
-    // If the contents of the arrays are NOT the same... alert YOU LOST.
-
-
-
-
-
-
-
-
-
-
-// });
