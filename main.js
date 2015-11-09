@@ -19,7 +19,9 @@ var button4 = document.querySelector("#button4");
 
 var moves = [];
 var computerMoves = [];
+var scoreNumber = document.querySelector("#number")
 
+var score1 = 0
 //assinging all variables, figured that each button and each simon element needed it's own var
 //doing it by class didnt help differentiate them enough. 
 
@@ -63,21 +65,25 @@ var toggleAlien = function(event){
     for (var i = 0; i < moves.length; i++) {
         if (moves[i] !== computerMoves[i]) {
             arraysDoMatch = false;
-        };
-    };
+        }
+    }
 
     if (arraysDoMatch) {
         console.log("They match!");
         // I get to move on to the next round!
         // reset user's moves counter
         moves = [];
+        //score counter
+        score1 ++;
+        scoreNumber.innerHTML  = score1;  //thanks taylor! 
     } else {
-        console.log("Noo.")
+        alert("You Lose!")
+        console.log("Noo.");
     }
     // If the arrays are the same length & contain the same stuff in the same order, the user won that round! Computer goes again & adds to array
     // If the arrays are not the same length (User's array is shorter), then we wait for another click 
     // If the contents of the arrays are NOT the same... alert YOU LOST.
-}
+};
 
 //Above is sort of a test to see that all my elements are assinged 
 // properly, and that the classes are working properly. 
@@ -100,8 +106,26 @@ var aliens = [
 	alien2,
 	alien3,
 	alien4
-]
+];
 
+//this below is thanks to Taylor for giving me a good direction!
+
+
+
+var hide = function (alienFlash){
+    alienFlash.classList.add("hidden");
+
+};
+
+var show = function (alienFlash) {
+    alienFlash.classList.remove("hidden");
+};
+
+
+var flash = function (alienFlash){
+    hide(alienFlash);
+    window.setTimeout(show, 500, alienFlash);
+};
 
 var randomToggle = function(){
     var random = aliens[Math.floor(Math.random()*aliens.length)];
@@ -111,18 +135,37 @@ var randomToggle = function(){
     //make every element blink. 
     for (var i = 0; i < computerMoves.length; i++) {
         var setTimer = function(indexToRemember) {
-            setTimeout(function(){
-            computerMoves[indexToRemember].classList.add("hidden");
-            },1000);
-            setTimeout(function(){
-                computerMoves[indexToRemember].classList.remove("hidden");
-            },1500);
-        };
+            window.setTimeout(function(){
+            var alienFlash = computerMoves[indexToRemember];
+            flash(alienFlash);
+            }, indexToRemember * 1000);
+    };
+
         setTimer(i);
 
-    };
-	
+}
 };
+
+// var randomToggle = function(){
+//     var random = aliens[Math.floor(Math.random()*aliens.length)];
+//     // storing this random div in the computer moves array
+//     computerMoves.push(random);
+//     //for loop to iteratre through array. 
+//     //make every element blink. 
+//     for (var i = 0; i < computerMoves.length; i++) {
+//         var setTimer = function(indexToRemember) {
+//             setTimeout(function(){
+//             computerMoves[indexToRemember].classList.add("hidden");
+//             },1000);
+//             setTimeout(function(){
+//                 computerMoves[indexToRemember].classList.remove("hidden");
+//             },1500);
+//         };
+//         setTimer(i);
+
+//     };
+	
+// };
 
 
 
@@ -143,7 +186,7 @@ var movePush = function(){
             },100);
             setTimeout(function(){
                 alien1.classList.remove("hidden");
-            },150);
+            },300);
         // toggleAlien(alien1);
     } else if (event.target === button2) {
         moves.push(alien2);
@@ -152,7 +195,7 @@ var movePush = function(){
             },100);
             setTimeout(function(){
                 alien2.classList.remove("hidden");
-            },150);
+            },300);
         // toggleAlien(alien2);
     } else if (event.target === button3) {
         moves.push(alien3);
@@ -161,7 +204,7 @@ var movePush = function(){
             },100);
             setTimeout(function(){
                 alien3.classList.remove("hidden");
-            },150);
+            },300);
         // toggleAlien(alien3);
     // } else (event.target.id === button4) {
         // else doesn't need a conditional
@@ -174,7 +217,7 @@ var movePush = function(){
                 alien4.classList.remove("hidden");
             },800);
         // toggleAlien(alien4);
-    };
+    }
 };
 
 // movePush();
